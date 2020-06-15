@@ -21,7 +21,7 @@ class Category extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function category()
+    public function products()
     {
         return $this->hasMany(Product::class);
     }
