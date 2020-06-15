@@ -15,6 +15,15 @@ class Category extends Model
         'name'
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at', 'updated_at'
+    ];
+
 
     /**
      * Relation with Product model that returns related Products.
