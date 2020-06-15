@@ -11,6 +11,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'description' => $faker->text(500),
         'price' => $faker->numberBetween(100000, 100000000), // price unit assumed IRR(Rials)
         'count' => $faker->numberBetween(5, 5000),
-        'category' => $faker->numberBetween(1, 20), // 20 categories will be generated so assign each product to one category
+        'category_id' => $faker->numberBetween(1, 20), // 20 categories will be generated so assign each product to one category
     ];
 });
