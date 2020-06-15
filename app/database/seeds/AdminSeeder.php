@@ -1,6 +1,7 @@
 <?php
 
 use \App\User;
+use \Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder
@@ -13,7 +14,10 @@ class AdminSeeder extends Seeder
     public function run()
     {
         factory(User::class, 1)->create([
+            'name' => 'admin',
+            'email' => 'admin@site.com',
             'role' => 'admin',
+            'password' => Hash::make('admin'),
         ]);
     }
 }
