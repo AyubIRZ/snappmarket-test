@@ -31,7 +31,7 @@ class ProductTest extends TestCase
 
         $response->assertStatus(200)
             ->assertJson([
-               'ok' => true
+                'ok' => true
             ]);
     }
 
@@ -69,5 +69,42 @@ class ProductTest extends TestCase
                     'current_page'
                 ]
             ]);
+    }
+
+    /**
+     * Test to see if the get products list endpoint with a category is returning correct products filtered by category.
+     *
+     * @return void
+     */
+    public function testProductListEndpointWithCategoryReturnsCorrectProducts()
+    {
+        $category = 1;
+
+        $response = $this->get('/api/products?category=' . $category);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    'data' => [
+                        [
+                            'category_id' => $category
+                        ]
+                    ]
+                ]
+            ]);
+    }
+
+    /**
+     * Test to see if the get products list endpoint with a wrong category is returning error.
+     *
+     * @return void
+     */
+    public function testProductListEndpointWithWrongCategoryReturnsError()
+    {
+        $category = 1000515;
+
+        $response = $this->get('/api/products?category=' . $category);
+
+        $response->assertStatus(422);
     }
 }
