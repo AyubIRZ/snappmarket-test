@@ -49,6 +49,12 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function getProductList($categoryId = null)
     {
+        if ($categoryId != null){
+            $products = $this->model->with('category')->where('category_id', $categoryId)->paginate(env('PAGINATION_PER_PAGE'));
+
+            return $products;
+        }
+
         $products = $this->model->with('category')->paginate(env('PAGINATION_PER_PAGE'));
 
         return $products;
