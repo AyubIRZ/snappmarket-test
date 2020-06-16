@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Product;
+use App\Repositories\ProductRepositoryInterface;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(ProductRepositoryInterface $productRepository)
     {
-        $products = Product::with('category')->paginate(10);
+        $products = $productRepository->getProductList();
 
         $response = [
             'ok' => true,
