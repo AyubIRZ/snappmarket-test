@@ -51,4 +51,23 @@ class ProductTest extends TestCase
                 'data'
             ]);
     }
+
+    /**
+     * Test to see if the get products list endpoint is returning paginated data.
+     *
+     * @return void
+     */
+    public function testProductListEndpointReturnsPaginatedData()
+    {
+        $response = $this->get('/api/products');
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                'ok',
+                'message',
+                'data' => [
+                    'current_page'
+                ]
+            ]);
+    }
 }
