@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProductListRequest;
 use App\Repositories\ProductRepositoryInterface;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(ProductRepositoryInterface $productRepository)
+    public function index(ProductRepositoryInterface $productRepository, ProductListRequest $request)
     {
-        $products = $productRepository->getProductList();
+        $category = $request->category ?? null;
+        $products = $productRepository->getProductList($category);
 
         $response = [
             'ok' => true,
