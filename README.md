@@ -52,3 +52,4 @@ $ docker-compose exec app php artisan test
 - There is no API visioning, to keep the structure simple.
 - No relation join was used inside the ProductRepository because of performance.
 - The uploaded CSV file rows are not being validated and they are considered to be in the right structure, to keep things simple.
+- Swagger OpenAPI documentation of API endpoints will be available soon.
