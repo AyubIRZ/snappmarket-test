@@ -82,4 +82,14 @@ class BaseRepository implements EloquentRepositoryInterface
         return $this->model->with($relations)->find($id);
     }
 
+    /**
+     * Inserts an array of objects into the database.
+     *
+     * @param array $collection
+     * @return Model
+     */
+    public function createMany(array $collection)
+    {
+        return $this->model->insert($collection);
+    }
 }

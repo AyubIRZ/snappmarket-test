@@ -20,4 +20,12 @@ interface ProductRepositoryInterface
      * @return mixed
      */
     public function getProductList($categoryId = null);
+
+    /**
+     * Should inserts an array of objects into the database.
+     *
+     * @param $collection
+     * @return mixed
+     */
+    public function createMany(array $collection);
 }
